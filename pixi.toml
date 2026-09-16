@@ -1,0 +1,34 @@
+[workspace]
+name = "dishonored-2-headtracking"
+version = "0.0.0"
+description = "Head tracking mod for Dishonored 2"
+authors = ["itsloopyo"]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tasks]
+sync = "git submodule update --remote cameraunlock-core"
+# Nothing to bootstrap: the build resolves everything from the repo itself - the
+# vendored loader, the MinHook sources and the cameraunlock-core submodule - and
+# needs no game installed and nothing fetched. The task exists so the chain has
+# the same shape as every other mod's, and so its absence is not read as an
+# omission.
+setup = "powershell -NoProfile -Command \"Write-Host 'setup: nothing to bootstrap; sources are all in-repo'\""
+build = "powershell -ExecutionPolicy Bypass -File scripts/build.ps1"
+test = { cmd = "ctest --test-dir build -C Release --output-on-failure", depends-on = ["build"] }
+clean = "powershell -Command \"if (Test-Path build) { Remove-Item -Recurse -Force build }; if (Test-Path bin) { Remove-Item -Recurse -Force bin }; if (Test-Path release) { Remove-Item -Recurse -Force release }\""
+install = { cmd = "powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1", depends-on = ["build"] }
+uninstall = "powershell -ExecutionPolicy Bypass -File scripts/uninstall-local.ps1"
+package = { cmd = "powershell -ExecutionPolicy Bypass -File scripts/package-release.ps1", depends-on = ["build", "test"] }
+release = "powershell -ExecutionPolicy Bypass -File scripts/release.ps1"
+update-deps = "powershell -ExecutionPolicy Bypass -File scripts/update-deps.ps1"
+release-nightly = "powershell -ExecutionPolicy Bypass -File scripts/release-nightly.ps1"
+validate-manifest = "node cameraunlock-core/scripts/validate-manifest.mjs"
+validate-notices = "node cameraunlock-core/scripts/validate-notices.mjs ."
+
+[dependencies]
+cmake = ">=3.20"
+# The packager validates the built ZIP and the notices with the core repo's node
+# scripts and refuses to package without them. Pinned here rather than taken off
+# the host PATH so `pixi run package` works from a clean checkout.
+nodejs = ">=20"

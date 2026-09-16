@@ -1,0 +1,59 @@
+# Build outputs
+build/
+bin/
+obj/
+release/
+dist/
+out/
+
+# Pixi
+.pixi/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Local game DLL stubs (game-side libs are referenced at build time and gitignored)
+libs/
+
+# Install-time state file (written to the game dir, never tracked)
+.headtracking-state.json
+
+# Claude / Lab / agent scaffolding
+.claude/
+.lab/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursor/
+.cursorrules
+.aider*
+
+# Skills
+.skills/
+skills/
+
+# Logs
+*.log
+
+# MCP servers
+.mcp/
+.mcp.json
+
+# NexusMods page copy source
+NEXUS_MODS.md
+
+# Game binaries and anything derived from them must never enter this repo.
+# Working files stay under .lab/ (ignored above); these entries are
+# belt-and-braces so a stray copy at any path cannot be staged by accident.
+*.exe
+*.gpr
+*.rep/
+*.gzf
+
+# Written by the shipped-ini test when HeadTracking.ini has drifted from
+# Config::Save; copy it over the real file, do not commit it.
+HeadTracking.ini.expected
