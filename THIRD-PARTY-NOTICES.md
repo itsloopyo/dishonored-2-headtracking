@@ -17,7 +17,7 @@ been recorded yet; the terms it lands under are set out below.
 | injector | `3a384e8` (inside Ultimate ASI Loader v9.7.4) | Zlib | Compiled into the vendored dinput8.dll |
 | miniz | 3.0.2 (inside Ultimate ASI Loader v9.7.4) | MIT | Compiled into the vendored dinput8.dll |
 | MinHook | v1.3.4 (`c3fcafd`) | BSD-2-Clause | Compiled into `Dishonored2HeadTracking.asi` |
-| cameraunlock-core | `bd22895` | MIT | Compiled into `Dishonored2HeadTracking.asi` |
+| cameraunlock-core | `c480d8a` | MIT | Compiled into `Dishonored2HeadTracking.asi` |
 | OpenTrack | n/a | ISC | Not bundled; UDP protocol interoperability only |
 
 ---
@@ -275,7 +275,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## cameraunlock-core
 
-- **Version:** commit `bd22895bb30ab7946d780b0af5782755e33e2cba`
+- **Version:** commit `c480d8a8177753966a7d33b857f1db12f5e9fe39`
 - **License:** `MIT`
 - **Upstream:** https://github.com/itsloopyo/cameraunlock-core
 - **Usage:** the shared tracking pipeline: UDP receiver, pose interpolation,
