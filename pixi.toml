@@ -7,6 +7,7 @@ channels = ["conda-forge"]
 platforms = ["win-64"]
 
 [tasks]
+update-submodule = "git submodule update --remote cameraunlock-core && powershell -NoProfile -ExecutionPolicy Bypass -File cameraunlock-core/scripts/update-submodule.ps1"
 sync = "git submodule update --remote cameraunlock-core"
 # Nothing to bootstrap: the build resolves everything from the repo itself - the
 # vendored loader, the MinHook sources and the cameraunlock-core submodule - and
