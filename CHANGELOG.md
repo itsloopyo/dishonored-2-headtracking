@@ -48,3 +48,6 @@
   written whole and with a dot for the decimal point, and a hotkey as a code
   rather than a key name; anything else keeps the default and says so in
   `HeadTracking.log`.
+- Added world-locked yaw as the starting yaw mode (`[Rotation]
+  WorldLockedYaw=1`), matching the other head-tracking mods. `Page Down` (or
+  `Ctrl+Shift+H`) switches to camera-local yaw in game.

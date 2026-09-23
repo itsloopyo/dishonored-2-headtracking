@@ -93,7 +93,7 @@ struct Config {
     long camera_trace_ms = 0;
 
     // Yaw mode
-    bool world_locked_yaw = false;
+    bool world_locked_yaw = true;
 
     // Hotkey VK codes
     int hotkey_toggle = DEFAULT_TOGGLE_KEY;

@@ -213,7 +213,7 @@ void RoundTripTests() {
     saved.invert_pitch = true;
     saved.local_smoothing = 0.25f;
     saved.remote_smoothing = 0.40f;
-    saved.world_locked_yaw = true;
+    saved.world_locked_yaw = false;
     saved.position_enabled = false;
     saved.pos_sens_z = 1.5f;
     saved.pos_limit_z_back = 0.05f;
@@ -230,7 +230,7 @@ void RoundTripTests() {
     Check(loaded.invert_pitch, "invert pitch round-trips");
     Check(loaded.local_smoothing == 0.25f, "local smoothing round-trips");
     Check(loaded.remote_smoothing == 0.40f, "remote smoothing round-trips");
-    Check(loaded.world_locked_yaw, "world-locked yaw round-trips");
+    Check(!loaded.world_locked_yaw, "camera-local yaw round-trips");
     Check(!loaded.position_enabled, "position enabled round-trips");
     Check(loaded.pos_sens_z == 1.5f, "position sensitivity round-trips");
     Check(loaded.pos_limit_z_back == 0.05f, "position limit round-trips");

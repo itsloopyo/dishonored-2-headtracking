@@ -194,7 +194,7 @@ LocalSmoothing=0
 RemoteSmoothing=0.15
 ; 1 = yaw turns about the world's up axis, 0 = about the camera's own.
 ; Page Down (or Ctrl+Shift+H) switches it in game.
-WorldLockedYaw=0
+WorldLockedYaw=1
 
 [Position]
 ; Which mode the mod STARTS in: 1 is rotation and position, 0 is rotation
@@ -265,7 +265,7 @@ YawMode=0x22
 - **Jittery or unstable tracking:** raise `LocalSmoothing` or `RemoteSmoothing` in `[Rotation]`. Which of the two is in force is decided by the address the packets arrive from, not by which machine they came from: only `127.0.0.1` counts as local, so a tracker running on this PC but sending to the PC's own LAN address gets `RemoteSmoothing`. `HeadTracking.log` names the one it picked. Wireless and webcam trackers especially benefit from a higher value.
 - **View sits off-center:** center it in your tracker app. OpenTrack's Center bind, or the CENTER button in your phone app, zeroes the pose the mod receives.
 - **Wrong rotation axis:** set the matching `Invert*` flag in `[Rotation]` if an axis tracks in the opposite direction.
-- **Yaw feels wrong when looking steeply up or down:** press `Page Down` (or `Ctrl+Shift+H`) to switch yaw mode. Camera-local yaw, the default here, turns the view about the camera's own up axis, so at a steep pitch a glance sideways spins the world rather than sweeping it. World-locked yaw turns about the world up axis instead and keeps that glance level. Set `WorldLockedYaw=1` in `[Rotation]` to start in world-locked mode.
+- **Yaw feels wrong when looking steeply up or down:** press `Page Down` (or `Ctrl+Shift+H`) to switch yaw mode. World-locked yaw, the default, turns about the world up axis and keeps a sideways glance level at any pitch. Camera-local yaw turns the view about the camera's own up axis instead, so at a steep pitch a glance sideways spins the world rather than sweeping it. Set `WorldLockedYaw=0` in `[Rotation]` to start in camera-local mode.
 - **Tracking feels stronger or weaker after a zoom:** it should not, and `HeadTracking.log` says why. The `[camera] zoom compensation basis:` line prints the field of view the frame was drawn with, the field of view set in the game's video settings, and the factor between them; the per-frame `[camera]` lines carry `zoom=` too. In ordinary gameplay that factor reads `1.0000`. A line saying `no zoom compensation from this frame` means the field of view could not be read, in which case the pose is applied at 1:1 and nothing else changes.
 - **The view stops short when I lean into a wall:** that is deliberate. The mod
   runs the engine's own line check from your un-leaned eye toward where your head
